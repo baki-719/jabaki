@@ -1,6 +1,6 @@
 package com.baki.jabaki;
 
-import com.baki.app.controller.HelloController;
+import com.baki.app.controller.JabakiHandler;
 import io.undertow.Undertow;
 
 public class Jabaki {
@@ -9,7 +9,7 @@ public class Jabaki {
     public static void run() {
         Undertow undertow = Undertow.builder()
                 .addHttpListener(8080, LOCAL_HOST)
-                .setHandler(new HelloController())
+                .setHandler(new JabakiHandler())
                 .build();
         undertow.start();
     }
