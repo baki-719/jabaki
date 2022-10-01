@@ -1,30 +1,16 @@
 package com.baki.app.controller;
 
-public class HelloController {
+import io.undertow.server.HttpHandler;
+import io.undertow.server.HttpServerExchange;
+
+public class HelloController implements HttpHandler {
+
     public static final String URL = "hello";
+    public static final HelloController INSTANCE = new HelloController();
 
-    public String get(String param) {
-        System.out.println(param);
-        return "GET hello world";
-    }
-
-    public String post(String param) {
-        System.out.println(param);
-        return "POST hello world";
-    }
-
-    public String put(String param) {
-        System.out.println(param);
-        return "PUT hello world";
-    }
-
-    public String patch(String param) {
-        System.out.println(param);
-        return "PATCH hello world";
-    }
-
-    public String delete(String param) {
-        System.out.println(param);
-        return "DELETE hello world";
+    @Override
+    public void handleRequest(HttpServerExchange exchange) {
+        System.out.println("request in");
+        System.out.println("exchange.getRequestURI => " + exchange.getRequestURI());
     }
 }
